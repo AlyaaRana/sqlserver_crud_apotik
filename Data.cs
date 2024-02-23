@@ -202,6 +202,8 @@ namespace sqlserver_crud_apotik
 
                 bind_data();
                 btnClear_Click(sender, e);
+
+                MessageBox.Show("Data berhasil dihapus.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -269,5 +271,32 @@ namespace sqlserver_crud_apotik
                 MessageBox.Show("Error updating record: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            SqlCommand sqlCommand = new SqlCommand("Select id, nama, telp, kelamin, tgldaftar, keluhan ,gejala, jenisobat from pharmacy where nama Like @nama+'%'", conn);
+
+            sqlCommand.Parameters.AddWithValue("nama", txtSearch.Text);
+
+            SqlDataAdapter dataAdapter = new SqlDataAdapter();
+            dataAdapter.SelectCommand = sqlCommand;
+
+            DataTable dataTable = new DataTable();
+            dataTable.Clear();
+            dataAdapter.Fill(dataTable);
+
+            if (dataTable.Rows.Count > 0)
+            {
+                dataGridView1.DataSource = dataTable;
+                dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 9);
+                dataGridView1.DefaultCellStyle.Font = new Font("Tahona", 8);
+            }
+            else
+            {
+                dataGridView1.DataSource = null;
+                MessageBox.Show("Data kosong.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
     }
 }
