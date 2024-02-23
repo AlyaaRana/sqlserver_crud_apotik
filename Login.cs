@@ -13,9 +13,12 @@ namespace sqlserver_crud_apotik
 {
     public partial class Login : Form
     {
+        private Dashboard dashboard;
+
         public Login()
         {
             InitializeComponent();
+            dashboard = new Dashboard();
         }
 
         private void Login_Load(object sender, EventArgs e)
@@ -55,9 +58,9 @@ namespace sqlserver_crud_apotik
             {
                 MessageBox.Show("Login Success", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                Dashboard dashboard = new Dashboard();
+                dashboard.LoggedInUsername = txtUsername.Text;
                 dashboard.Show();
-                this.Hide();  
+                this.Hide();
             }
             else
             {
@@ -65,9 +68,15 @@ namespace sqlserver_crud_apotik
             }
         }
 
+
         private void cbPassword_CheckedChanged(object sender, EventArgs e)
         {
             txtPassword.PasswordChar = cbPassword.Checked ? '\0' : '*';
+        }
+
+        private void txtUsername_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -60,8 +60,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.navHistory = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
             this.btnPrintPdf = new System.Windows.Forms.Button();
@@ -73,7 +71,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.navDashboard)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navHistory)).BeginInit();
             this.SuspendLayout();
             // 
@@ -255,9 +252,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.pictureBox4);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.navHistory);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -405,28 +400,6 @@
             this.dataGridView1.TabIndex = 48;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(71, 370);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 17);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "User";
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::sqlserver_crud_apotik.Properties.Resources.icons8_user_48;
-            this.pictureBox4.Location = new System.Drawing.Point(25, 361);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(39, 41);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 19;
-            this.pictureBox4.TabStop = false;
-            // 
             // navHistory
             // 
             this.navHistory.Image = global::sqlserver_crud_apotik.Properties.Resources.icons8_note_50;
@@ -532,6 +505,7 @@
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Data";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Data_Load);
             this.panel1.ResumeLayout(false);
@@ -541,7 +515,6 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navHistory)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -582,8 +555,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DateTimePicker dateTimePicker;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.PictureBox navHistory;
         private System.Windows.Forms.Button btnPrintPdf;

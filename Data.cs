@@ -16,9 +16,18 @@ namespace sqlserver_crud_apotik
 {
     public partial class Data : Form
     {
+        
+
         public Data()
         {
             InitializeComponent();
+            bind_data();
+            CustomizeDataGridView();
+        }
+
+        private void CustomizeDataGridView()
+        {
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill ;
         }
 
         SqlConnection conn = new SqlConnection("Data Source=alyaapunyaaa;Initial Catalog=pharmacy;Integrated Security=True");
