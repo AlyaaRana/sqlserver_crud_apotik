@@ -124,5 +124,10 @@ namespace sqlserver_crud_apotik
         {
 
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

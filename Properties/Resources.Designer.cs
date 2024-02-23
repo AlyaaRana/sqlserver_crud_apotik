@@ -83,6 +83,16 @@ namespace sqlserver_crud_apotik.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_capsule_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-capsule-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_dashboard_48 {
             get {
                 object obj = ResourceManager.GetObject("icons8-dashboard-48", resourceCulture);
@@ -96,6 +106,16 @@ namespace sqlserver_crud_apotik.Properties {
         internal static System.Drawing.Bitmap icons8_dashboard_48__1_ {
             get {
                 object obj = ResourceManager.GetObject("icons8-dashboard-48 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_gender_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-gender-50", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -136,6 +156,16 @@ namespace sqlserver_crud_apotik.Properties {
         internal static System.Drawing.Bitmap icons8_note_50 {
             get {
                 object obj = ResourceManager.GetObject("icons8-note-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_patient_50__1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-patient-50 (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

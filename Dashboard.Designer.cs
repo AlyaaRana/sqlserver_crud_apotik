@@ -28,35 +28,54 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.navHistory = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labeltext = new System.Windows.Forms.Label();
-            this.navDashboard = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblTxt = new System.Windows.Forms.Label();
             this.labelTxt = new System.Windows.Forms.Label();
             this.addComment = new Bunifu.Framework.UI.BunifuCards();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.bunifuCards2 = new Bunifu.Framework.UI.BunifuCards();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.bunifuCards1 = new Bunifu.Framework.UI.BunifuCards();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.bunifuCards3 = new Bunifu.Framework.UI.BunifuCards();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.navHistory = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.navDashboard = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.addComment.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
+            this.bunifuCards2.SuspendLayout();
+            this.bunifuCards1.SuspendLayout();
+            this.bunifuCards3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navHistory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navDashboard)).BeginInit();
-            this.panel2.SuspendLayout();
-            this.addComment.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -70,7 +89,7 @@
             this.panel1.Controls.Add(this.navDashboard);
             this.panel1.Location = new System.Drawing.Point(0, -2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(178, 819);
+            this.panel1.Size = new System.Drawing.Size(178, 833);
             this.panel1.TabIndex = 0;
             // 
             // label2
@@ -96,27 +115,6 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "History";
             // 
-            // navHistory
-            // 
-            this.navHistory.Image = global::sqlserver_crud_apotik.Properties.Resources.icons8_note_50;
-            this.navHistory.Location = new System.Drawing.Point(25, 286);
-            this.navHistory.Name = "navHistory";
-            this.navHistory.Size = new System.Drawing.Size(39, 41);
-            this.navHistory.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.navHistory.TabIndex = 3;
-            this.navHistory.TabStop = false;
-            this.navHistory.Click += new System.EventHandler(this.navHistory_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::sqlserver_crud_apotik.Properties.Resources.icons8_medicine_32;
-            this.pictureBox1.Location = new System.Drawing.Point(50, 37);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(60, 51);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // labeltext
             // 
             this.labeltext.AutoSize = true;
@@ -129,17 +127,6 @@
             this.labeltext.TabIndex = 2;
             this.labeltext.Text = "Dashboard";
             this.labeltext.Click += new System.EventHandler(this.labeltext_Click);
-            // 
-            // navDashboard
-            // 
-            this.navDashboard.Image = global::sqlserver_crud_apotik.Properties.Resources.icons8_dashboard_48__1_;
-            this.navDashboard.Location = new System.Drawing.Point(25, 214);
-            this.navDashboard.Name = "navDashboard";
-            this.navDashboard.Size = new System.Drawing.Size(39, 38);
-            this.navDashboard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.navDashboard.TabIndex = 1;
-            this.navDashboard.TabStop = false;
-            this.navDashboard.Click += new System.EventHandler(this.navDashboard_Click);
             // 
             // button2
             // 
@@ -195,23 +182,13 @@
             this.addComment.IndicatorColor = System.Drawing.Color.Transparent;
             this.addComment.LeftSahddow = false;
             this.addComment.LeftShadow = false;
-            this.addComment.Location = new System.Drawing.Point(206, 142);
+            this.addComment.Location = new System.Drawing.Point(206, 128);
             this.addComment.Name = "addComment";
             this.addComment.RightSahddow = true;
             this.addComment.RightShadow = true;
             this.addComment.ShadowDepth = 20;
             this.addComment.Size = new System.Drawing.Size(909, 147);
             this.addComment.TabIndex = 59;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(707, 12);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(187, 171);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 22;
-            this.pictureBox2.TabStop = false;
             // 
             // label3
             // 
@@ -229,21 +206,22 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(202, 501);
+            this.label4.Location = new System.Drawing.Point(202, 508);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(181, 20);
+            this.label4.Size = new System.Drawing.Size(71, 20);
             this.label4.TabIndex = 60;
-            this.label4.Text = "Statistik data pasien";
+            this.label4.Text = "Activity";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(202, 336);
+            this.label5.Location = new System.Drawing.Point(202, 315);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 20);
+            this.label5.Size = new System.Drawing.Size(191, 20);
             this.label5.TabIndex = 61;
-            this.label5.Text = "Actions";
+            this.label5.Text = "Wellness Wonderland";
             // 
             // chart
             // 
@@ -254,23 +232,237 @@
             this.chart.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart.Legends.Add(legend1);
-            this.chart.Location = new System.Drawing.Point(206, 524);
+            this.chart.Location = new System.Drawing.Point(206, 563);
             this.chart.Name = "chart";
             this.chart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chart.Series.Add(series1);
-            this.chart.Size = new System.Drawing.Size(909, 265);
+            this.chart.Size = new System.Drawing.Size(909, 253);
             this.chart.TabIndex = 62;
             this.chart.Text = "chart1";
             this.chart.Click += new System.EventHandler(this.chart_Click);
+            // 
+            // bunifuCards2
+            // 
+            this.bunifuCards2.BackColor = System.Drawing.Color.Black;
+            this.bunifuCards2.BorderRadius = 35;
+            this.bunifuCards2.BottomSahddow = true;
+            this.bunifuCards2.BottomShadow = true;
+            this.bunifuCards2.color = System.Drawing.Color.Transparent;
+            this.bunifuCards2.Controls.Add(this.label8);
+            this.bunifuCards2.Controls.Add(this.pictureBox3);
+            this.bunifuCards2.Controls.Add(this.label7);
+            this.bunifuCards2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.bunifuCards2.IndicatorColor = System.Drawing.Color.Transparent;
+            this.bunifuCards2.LeftSahddow = false;
+            this.bunifuCards2.LeftShadow = false;
+            this.bunifuCards2.Location = new System.Drawing.Point(206, 347);
+            this.bunifuCards2.Name = "bunifuCards2";
+            this.bunifuCards2.RightSahddow = true;
+            this.bunifuCards2.RightShadow = true;
+            this.bunifuCards2.ShadowDepth = 20;
+            this.bunifuCards2.Size = new System.Drawing.Size(248, 131);
+            this.bunifuCards2.TabIndex = 65;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label6.Location = new System.Drawing.Point(202, 528);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(183, 23);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Analystic of the month";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(111, 49);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(85, 18);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Total Drugs";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(109, 79);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(27, 29);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "5";
+            // 
+            // bunifuCards1
+            // 
+            this.bunifuCards1.BackColor = System.Drawing.Color.White;
+            this.bunifuCards1.BorderRadius = 35;
+            this.bunifuCards1.BottomSahddow = true;
+            this.bunifuCards1.BottomShadow = true;
+            this.bunifuCards1.color = System.Drawing.Color.Transparent;
+            this.bunifuCards1.Controls.Add(this.label9);
+            this.bunifuCards1.Controls.Add(this.pictureBox4);
+            this.bunifuCards1.Controls.Add(this.label10);
+            this.bunifuCards1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.bunifuCards1.IndicatorColor = System.Drawing.Color.Transparent;
+            this.bunifuCards1.LeftSahddow = false;
+            this.bunifuCards1.LeftShadow = false;
+            this.bunifuCards1.Location = new System.Drawing.Point(497, 347);
+            this.bunifuCards1.Name = "bunifuCards1";
+            this.bunifuCards1.RightSahddow = true;
+            this.bunifuCards1.RightShadow = true;
+            this.bunifuCards1.ShadowDepth = 20;
+            this.bunifuCards1.Size = new System.Drawing.Size(248, 131);
+            this.bunifuCards1.TabIndex = 66;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(109, 79);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(27, 29);
+            this.label9.TabIndex = 3;
+            this.label9.Text = "5";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(111, 49);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(111, 18);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Total Customer";
+            // 
+            // bunifuCards3
+            // 
+            this.bunifuCards3.BackColor = System.Drawing.Color.White;
+            this.bunifuCards3.BorderRadius = 35;
+            this.bunifuCards3.BottomSahddow = true;
+            this.bunifuCards3.BottomShadow = true;
+            this.bunifuCards3.color = System.Drawing.Color.Transparent;
+            this.bunifuCards3.Controls.Add(this.label11);
+            this.bunifuCards3.Controls.Add(this.pictureBox5);
+            this.bunifuCards3.Controls.Add(this.label12);
+            this.bunifuCards3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.bunifuCards3.IndicatorColor = System.Drawing.Color.Transparent;
+            this.bunifuCards3.LeftSahddow = false;
+            this.bunifuCards3.LeftShadow = false;
+            this.bunifuCards3.Location = new System.Drawing.Point(783, 347);
+            this.bunifuCards3.Name = "bunifuCards3";
+            this.bunifuCards3.RightSahddow = true;
+            this.bunifuCards3.RightShadow = true;
+            this.bunifuCards3.ShadowDepth = 20;
+            this.bunifuCards3.Size = new System.Drawing.Size(248, 131);
+            this.bunifuCards3.TabIndex = 67;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(109, 79);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(27, 29);
+            this.label11.TabIndex = 3;
+            this.label11.Text = "2";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(111, 49);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(82, 18);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "Inclusive all";
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::sqlserver_crud_apotik.Properties.Resources.icons8_gender_50;
+            this.pictureBox5.Location = new System.Drawing.Point(20, 30);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(83, 78);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 2;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::sqlserver_crud_apotik.Properties.Resources.icons8_patient_50__1_;
+            this.pictureBox4.Location = new System.Drawing.Point(20, 30);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(83, 78);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 2;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::sqlserver_crud_apotik.Properties.Resources.icons8_capsule_50;
+            this.pictureBox3.Location = new System.Drawing.Point(20, 30);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(83, 78);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 2;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(707, 12);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(187, 171);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 22;
+            this.pictureBox2.TabStop = false;
+            // 
+            // navHistory
+            // 
+            this.navHistory.Image = global::sqlserver_crud_apotik.Properties.Resources.icons8_note_50;
+            this.navHistory.Location = new System.Drawing.Point(25, 286);
+            this.navHistory.Name = "navHistory";
+            this.navHistory.Size = new System.Drawing.Size(39, 41);
+            this.navHistory.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.navHistory.TabIndex = 3;
+            this.navHistory.TabStop = false;
+            this.navHistory.Click += new System.EventHandler(this.navHistory_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::sqlserver_crud_apotik.Properties.Resources.icons8_medicine_32;
+            this.pictureBox1.Location = new System.Drawing.Point(50, 37);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(60, 51);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // navDashboard
+            // 
+            this.navDashboard.Image = global::sqlserver_crud_apotik.Properties.Resources.icons8_dashboard_48__1_;
+            this.navDashboard.Location = new System.Drawing.Point(25, 214);
+            this.navDashboard.Name = "navDashboard";
+            this.navDashboard.Size = new System.Drawing.Size(39, 38);
+            this.navDashboard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.navDashboard.TabIndex = 1;
+            this.navDashboard.TabStop = false;
+            this.navDashboard.Click += new System.EventHandler(this.navDashboard_Click);
             // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1145, 816);
+            this.ClientSize = new System.Drawing.Size(1145, 829);
+            this.Controls.Add(this.bunifuCards3);
+            this.Controls.Add(this.bunifuCards1);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.bunifuCards2);
             this.Controls.Add(this.chart);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -285,14 +477,23 @@
             this.Load += new System.EventHandler(this.Dashboard_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.navHistory)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.navDashboard)).EndInit();
             this.panel2.ResumeLayout(false);
             this.addComment.ResumeLayout(false);
             this.addComment.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
+            this.bunifuCards2.ResumeLayout(false);
+            this.bunifuCards2.PerformLayout();
+            this.bunifuCards1.ResumeLayout(false);
+            this.bunifuCards1.PerformLayout();
+            this.bunifuCards3.ResumeLayout(false);
+            this.bunifuCards3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.navHistory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.navDashboard)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -317,5 +518,18 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart;
+        private Bunifu.Framework.UI.BunifuCards bunifuCards2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private Bunifu.Framework.UI.BunifuCards bunifuCards1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label label10;
+        private Bunifu.Framework.UI.BunifuCards bunifuCards3;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.Label label12;
     }
 }

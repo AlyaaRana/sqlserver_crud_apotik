@@ -252,6 +252,15 @@
   <ItemGroup>
     <None Include="Resources\download %282%29.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-capsule-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-patient-50 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-gender-50.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Microsoft.Data.SqlClient.SNI.5.1.1\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('packages\Microsoft.Data.SqlClient.SNI.5.1.1\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -23,6 +23,8 @@ namespace sqlserver_crud_apotik
             InitializeComponent();
             bind_data();
             CustomizeDataGridView();
+            ckbObat.DropDownStyle = ComboBoxStyle.DropDownList;
+
         }
 
         private void CustomizeDataGridView()
@@ -42,6 +44,7 @@ namespace sqlserver_crud_apotik
             da.Fill(dt);
             dataGridView1.DataSource = dt;
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Tahona", 8);
+            dataGridView1.ReadOnly = true;
         }
 
         private void Data_Load(object sender, EventArgs e)
@@ -251,11 +254,17 @@ namespace sqlserver_crud_apotik
             }
             gejala = gejala.TrimEnd(';');
 
-            String jenisObat = ckbObat.SelectedItem.ToString();
+            String jenisObat = "";
+            if (ckbObat.SelectedIndex != -1)
+            {
+                jenisObat = ckbObat.Items[ckbObat.SelectedIndex].ToString();
+            }
+
+            /*String jenisObat = ckbObat.SelectedItem != null ? ckbObat.SelectedItem.ToString() : "";*/
 
             string tglDaftar = dateTimePicker.Value.ToString("MMMM dd, yyyy");
 
-            SqlCommand cmd3 = new SqlCommand("Update pharmacy Set id=@id, nama=@nama, telp=@telp, kelamin=@kelamin, tgldaftar=@tgldaftar, keluhan=@keluhan ,gejala=@gejala, jenisobat=@jenisobat where id=@id", conn);
+            SqlCommand cmd3 = new SqlCommand("Update pharmacy Set id=@id, nama=@nama, telp=@telp, kelamin=@kelamin, keluhan=@keluhan ,gejala=@gejala, jenisobat=@jenisobat, tgldaftar=@tgldaftar where id=@id", conn);
 
             cmd3.Parameters.AddWithValue("id", txtId.Text);
             cmd3.Parameters.AddWithValue("nama", txtNama.Text);
@@ -307,5 +316,23 @@ namespace sqlserver_crud_apotik
             }
         }
 
+        private void btnPrintPdf_Click(object sender, EventArgs e)
+        {
+            printPreviewDialog1.Document = printDocument1;
+            printPreviewDialog1.PrintPreviewControl.Zoom = 1;
+            printPreviewDialog1.ShowDialog();
+        }
+
+        private void ckbObat_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            Bitmap imagebmp = new Bitmap(dataGridView1.Width, dataGridView1.Height);
+            dataGridView1.DrawToBitmap(imagebmp, new Rectangle(0, 0, imagebmp.Width, imagebmp.Height));
+            e.Graphics.DrawImage(imagebmp, 120, 20);
+        }
     }
 }
