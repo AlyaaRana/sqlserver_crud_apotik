@@ -71,7 +71,6 @@ namespace sqlserver_crud_apotik
             int index = e.RowIndex;
             DataGridViewRow selectedrow = dataGridView1.Rows[index];
 
-            // Extracting values from the selected row
             txtId.Text = selectedrow.Cells[0].Value.ToString();
             txtNama.Text = selectedrow.Cells[1].Value.ToString();
             txtNoTelp.Text = selectedrow.Cells[2].Value.ToString();
@@ -81,7 +80,6 @@ namespace sqlserver_crud_apotik
             string jenisObat = selectedrow.Cells[6].Value.ToString();
             DateTime tglDaftar = DateTime.Parse(selectedrow.Cells[7].Value.ToString());
 
-            // Setting values to the controls
             if (kelamin == "Laki-laki")
             {
                 rdLakiLaki.Checked = true;
@@ -98,7 +96,6 @@ namespace sqlserver_crud_apotik
                 rdPerempuan.Checked = false;
             }
 
-            // Set CheckBoxes for Symptoms using a loop
             cbDemam.Checked = false;
             cbPusing.Checked = false;
             cbMual.Checked = false;
@@ -112,11 +109,8 @@ namespace sqlserver_crud_apotik
                 if (symptom == "Mual") cbMual.Checked = true;
                 if (symptom == "Diare") cbDiare.Checked = true;
             }
-
-            // Set ComboBox for jenisObat
             ckbObat.SelectedItem = jenisObat;
 
-            // Set DateTimePicker for tglDaftar
             dateTimePicker.Value = tglDaftar;
         }
 
