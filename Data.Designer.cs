@@ -49,7 +49,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.navHistory = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labeltext = new System.Windows.Forms.Label();
+            this.navDashboard = new System.Windows.Forms.PictureBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -59,22 +63,18 @@
             this.label12 = new System.Windows.Forms.Label();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label10 = new System.Windows.Forms.Label();
             this.btnPrintPdf = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.navHistory = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.navDashboard = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navHistory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navDashboard)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtKeluhan
@@ -278,6 +278,39 @@
             this.label9.TabIndex = 5;
             this.label9.Text = "Medicine";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Transparent;
+            this.label10.Location = new System.Drawing.Point(71, 298);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(53, 17);
+            this.label10.TabIndex = 4;
+            this.label10.Text = "History";
+            // 
+            // navHistory
+            // 
+            this.navHistory.Image = global::sqlserver_crud_apotik.Properties.Resources.icons8_note_50;
+            this.navHistory.Location = new System.Drawing.Point(25, 286);
+            this.navHistory.Name = "navHistory";
+            this.navHistory.Size = new System.Drawing.Size(39, 41);
+            this.navHistory.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.navHistory.TabIndex = 3;
+            this.navHistory.TabStop = false;
+            this.navHistory.Click += new System.EventHandler(this.navHistory_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::sqlserver_crud_apotik.Properties.Resources.icons8_medicine_32;
+            this.pictureBox1.Location = new System.Drawing.Point(50, 37);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(60, 51);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // labeltext
             // 
             this.labeltext.AutoSize = true;
@@ -289,6 +322,17 @@
             this.labeltext.Size = new System.Drawing.Size(80, 17);
             this.labeltext.TabIndex = 2;
             this.labeltext.Text = "Dashboard";
+            // 
+            // navDashboard
+            // 
+            this.navDashboard.Image = global::sqlserver_crud_apotik.Properties.Resources.icons8_dashboard_48__1_;
+            this.navDashboard.Location = new System.Drawing.Point(25, 214);
+            this.navDashboard.Name = "navDashboard";
+            this.navDashboard.Size = new System.Drawing.Size(39, 38);
+            this.navDashboard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.navDashboard.TabIndex = 1;
+            this.navDashboard.TabStop = false;
+            this.navDashboard.Click += new System.EventHandler(this.navDashboard_Click);
             // 
             // btnAdd
             // 
@@ -370,6 +414,7 @@
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(245, 22);
             this.dateTimePicker.TabIndex = 47;
+            this.dateTimePicker.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
             // 
             // dataGridView1
             // 
@@ -381,19 +426,8 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(891, 305);
             this.dataGridView1.TabIndex = 48;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick_1);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Transparent;
-            this.label10.Location = new System.Drawing.Point(71, 298);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(53, 17);
-            this.label10.TabIndex = 4;
-            this.label10.Text = "History";
             // 
             // btnPrintPdf
             // 
@@ -456,38 +490,6 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
-            // navHistory
-            // 
-            this.navHistory.Image = global::sqlserver_crud_apotik.Properties.Resources.icons8_note_50;
-            this.navHistory.Location = new System.Drawing.Point(25, 286);
-            this.navHistory.Name = "navHistory";
-            this.navHistory.Size = new System.Drawing.Size(39, 41);
-            this.navHistory.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.navHistory.TabIndex = 3;
-            this.navHistory.TabStop = false;
-            this.navHistory.Click += new System.EventHandler(this.navHistory_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::sqlserver_crud_apotik.Properties.Resources.icons8_medicine_32;
-            this.pictureBox1.Location = new System.Drawing.Point(50, 37);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(60, 51);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // navDashboard
-            // 
-            this.navDashboard.Image = global::sqlserver_crud_apotik.Properties.Resources.icons8_dashboard_48__1_;
-            this.navDashboard.Location = new System.Drawing.Point(25, 214);
-            this.navDashboard.Name = "navDashboard";
-            this.navDashboard.Size = new System.Drawing.Size(39, 38);
-            this.navDashboard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.navDashboard.TabIndex = 1;
-            this.navDashboard.TabStop = false;
-            this.navDashboard.Click += new System.EventHandler(this.navDashboard_Click);
-            // 
             // Data
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -529,12 +531,12 @@
             this.Load += new System.EventHandler(this.Data_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navHistory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navDashboard)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

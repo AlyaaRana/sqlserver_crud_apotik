@@ -11,12 +11,13 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Data.SqlClient;
 using System.Data;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.LinkLabel;
 
 namespace sqlserver_crud_apotik
 {
     public partial class Data : Form
     {
-        
+        private string tglDaftar;
 
         public Data()
         {
@@ -75,11 +76,6 @@ namespace sqlserver_crud_apotik
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
-        }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
             int index = e.RowIndex;
             DataGridViewRow selectedrow = dataGridView1.Rows[index];
 
@@ -87,25 +83,22 @@ namespace sqlserver_crud_apotik
             txtNama.Text = selectedrow.Cells[1].Value.ToString();
             txtNoTelp.Text = selectedrow.Cells[2].Value.ToString();
             string kelamin = selectedrow.Cells[3].Value.ToString();
-            txtKeluhan.Text = selectedrow.Cells[4].Value.ToString();
-            string gejala = selectedrow.Cells[5].Value.ToString();
-            string jenisObat = selectedrow.Cells[6].Value.ToString();
-            DateTime tglDaftar = DateTime.Parse(selectedrow.Cells[7].Value.ToString());
+            txtKeluhan.Text = selectedrow.Cells[5].Value.ToString();
+            string gejala = selectedrow.Cells[6].Value.ToString();
+            string jenisObat = selectedrow.Cells[7].Value.ToString();
 
-            if (kelamin == "Laki-laki")
+            if (DateTime.TryParse(selectedrow.Cells[4].Value.ToString(), out DateTime dateTimeValue))
+            {
+                dateTimePicker.Value = dateTimeValue;
+            }
+
+            if (kelamin.Contains(rdLakiLaki.Text))
             {
                 rdLakiLaki.Checked = true;
-                rdPerempuan.Checked = false;
             }
-            else if (kelamin == "Perempuan")
+            else if (kelamin.Contains(rdPerempuan.Text))
             {
-                rdLakiLaki.Checked = false;
                 rdPerempuan.Checked = true;
-            }
-            else
-            {
-                rdLakiLaki.Checked = false;
-                rdPerempuan.Checked = false;
             }
 
             cbDemam.Checked = false;
@@ -113,17 +106,49 @@ namespace sqlserver_crud_apotik
             cbMual.Checked = false;
             cbDiare.Checked = false;
 
+            if (jenisObat.Contains("Obat Cair"))
+            {
+                ckbObat.SelectedIndex = 1;
+            }
+            else if (jenisObat.Contains("Tablet"))
+            {
+                ckbObat.SelectedIndex = 2;
+            }
+            else if (jenisObat.Contains("Kapsul"))
+            {
+                ckbObat.SelectedIndex = 3;
+            }
+            else if (jenisObat.Contains("Obat Oles"))
+            {
+                ckbObat.SelectedIndex = 4;
+            }
+            else if (jenisObat.Contains("Supositoria"))
+            {
+                ckbObat.SelectedIndex = 5;
+            }
+
+
             string[] selectedGejalaArray = gejala.Split(';');
             foreach (string symptom in selectedGejalaArray)
             {
-                if (symptom == "Demam") cbDemam.Checked = true;
-                if (symptom == "Pusing") cbPusing.Checked = true;
-                if (symptom == "Mual") cbMual.Checked = true;
-                if (symptom == "Diare") cbDiare.Checked = true;
+                switch (symptom)
+                {
+                    case "Demam":
+                        cbDemam.Checked = true;
+                        break;
+                    case "Pusing":
+                        cbPusing.Checked = true;
+                        break;
+                    case "Mual":
+                        cbMual.Checked = true;
+                        break;
+                    case "Diare":
+                        cbDiare.Checked = true;
+                        break;
+                }
             }
-            ckbObat.SelectedItem = jenisObat;
 
-            dateTimePicker.Value = tglDaftar;
+            /*ckbObat.SelectedItem = jenisObat;*/
         }
 
 
@@ -333,6 +358,16 @@ namespace sqlserver_crud_apotik
             Bitmap imagebmp = new Bitmap(dataGridView1.Width, dataGridView1.Height);
             dataGridView1.DrawToBitmap(imagebmp, new Rectangle(0, 0, imagebmp.Width, imagebmp.Height));
             e.Graphics.DrawImage(imagebmp, 120, 20);
+        }
+
+        private void dataGridView1_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
