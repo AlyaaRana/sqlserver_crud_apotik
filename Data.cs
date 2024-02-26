@@ -20,6 +20,7 @@ namespace sqlserver_crud_apotik
         private string tglDaftar;
         private int rowIndex = -1;
         private decimal totalPrice = 0;
+        private int selectedIndex = -1;
 
         public Data()
         {
@@ -81,41 +82,39 @@ namespace sqlserver_crud_apotik
         {
             int index = e.RowIndex;
             DataGridViewRow selectedrow = dataGridView1.Rows[index];
-            rowIndex = e.RowIndex; 
+            rowIndex = e.RowIndex;
 
             txtId.Text = selectedrow.Cells[0].Value.ToString();
             txtNama.Text = selectedrow.Cells[1].Value.ToString();
             txtNoTelp.Text = selectedrow.Cells[2].Value.ToString();
             string kelamin = selectedrow.Cells[3].Value.ToString();
-            /*txtKeluhan.Text = selectedrow.Cells[5].Value.ToString();*/
-            string gejala = selectedrow.Cells[5].Value.ToString();
-            string jenisObat = selectedrow.Cells[6].Value.ToString();
-            if (decimal.TryParse(selectedrow.Cells[7].Value.ToString(), out decimal parsedValue))
+            tglDaftar = selectedrow.Cells[4].Value.ToString();
+            string gejala = selectedrow.Cells["gejala"].Value.ToString();
+            totalBayar.Text = selectedrow.Cells[7].ToString();
+            /*String jenisObat = dataGridView1.Rows[rowIndex].Cells["jenisobat"].Value.ToString();*/
+            /*if (decimal.TryParse(selectedrow.Cells[7].Value.ToString(), out decimal parsedValue))
             {
                 totalPrice = parsedValue;
             }
             else
             {
-                // Handle the case where the conversion fails, e.g., set a default value or show an error message.
                 MessageBox.Show("Invalid total price value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                // You might want to set a default value for totalPrice or handle it according to your application logic.
             }
-            /*totalPrice = Convert.ToDecimal(selectedrow.Cells[7].Value);*/
 
             if (ckbObat.SelectedIndex >= 0 && ckbObat.SelectedIndex < jenisObatPrices.Length)
             {
-                int selectedIndex = ckbObat.SelectedIndex;
+                selectedIndex = ckbObat.SelectedIndex;
                 decimal jenisObatPrice = jenisObatPrices[selectedIndex];
 
                 int quantity = (int)quantityNumeric.Value;
                 totalPrice = jenisObatPrice * quantity;
 
-                totalBayar.Text = totalPrice.ToString(); // Convert to string before assigning to Text
+                totalBayar.Text = totalPrice.ToString();
             }
             else
             {
                 MessageBox.Show("Invalid jenis obat selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            }*/
 
             if (DateTime.TryParse(selectedrow.Cells[4].Value.ToString(), out DateTime dateTimeValue))
             {
@@ -131,52 +130,84 @@ namespace sqlserver_crud_apotik
                 rdPerempuan.Checked = true;
             }
 
-            cbDemam.Checked = false;
-            cbPusing.Checked = false;
-            cbMual.Checked = false;
-            cbDiare.Checked = false;
+            /*selectedIndex = ckbObat.FindStringExact(jenisObat);
+            ckbObat.SelectedIndex = selectedIndex >= 0 ? selectedIndex : 0;
 
-            if (jenisObat.Contains("Obat Cair"))
+            switch (jenisObat)
+            {
+                case "Obat Cair":
+                    ckbObat.SelectedIndex = 1;
+                    break;
+                case "Tablet":
+                    ckbObat.SelectedIndex = 2;
+                    break;
+                case "Kapsul":
+                    ckbObat.SelectedIndex = 3;
+                    break;
+                case "Obat Oles":
+                    ckbObat.SelectedIndex = 4;
+                    break;
+                case "Supositoria":
+                    ckbObat.SelectedIndex = 5;
+                    break;
+                default:
+                    ckbObat.SelectedIndex = 0;
+                    break;
+            }*/
+
+            string jenisobat = selectedrow.Cells["jenisobat"].Value.ToString();
+            if (jenisobat.Contains("Obat Cair"))
             {
                 ckbObat.SelectedIndex = 1;
             }
-            else if (jenisObat.Contains("Tablet"))
+            else if (jenisobat.Contains("Tablet"))
             {
                 ckbObat.SelectedIndex = 2;
             }
-            else if (jenisObat.Contains("Kapsul"))
+            else if (jenisobat.Contains("Kapsul"))
             {
                 ckbObat.SelectedIndex = 3;
             }
-            else if (jenisObat.Contains("Obat Oles"))
+            else if (jenisobat.Contains("Obat Oles"))
             {
                 ckbObat.SelectedIndex = 4;
             }
-            else if (jenisObat.Contains("Supositoria"))
+            else if (jenisobat.Contains("Supositoria"))
             {
-                ckbObat.SelectedIndex = 5;
+                ckbObat.SelectedIndex = 4;
             }
 
-
-            string[] selectedGejalaArray = gejala.Split(';');
-            foreach (string symptom in selectedGejalaArray)
+            /*jenisObat = "";
+            if (ckbObat.SelectedIndex != -1)
             {
-                switch (symptom)
-                {
-                    case "Demam":
-                        cbDemam.Checked = true;
-                        break;
-                    case "Pusing":
-                        cbPusing.Checked = true;
-                        break;
-                    case "Mual":
-                        cbMual.Checked = true;
-                        break;
-                    case "Diare":
-                        cbDiare.Checked = true;
-                        break;
-                }
+                jenisObat = ckbObat.Items[ckbObat.SelectedIndex].ToString();
+            }*/
+
+
+            cbDemam.Checked = gejala.Contains("Demam");
+            cbPusing.Checked = gejala.Contains("Pusing");
+            cbMual.Checked = gejala.Contains("Mual");
+            cbDiare.Checked = gejala.Contains("Diare");
+
+            /*if (cbDemam.Checked)
+            {
+                gejala += "Demam;";
             }
+            if (cbPusing.Checked)
+            {
+                gejala += "Pusing;";
+            }
+            if (cbMual.Checked)
+            {
+                gejala += "Mual;";
+            }
+            if (cbDiare.Checked)
+            {
+                gejala += "Diare;";
+            }
+            gejala = gejala.TrimEnd(';');*/
+
+            
         }
 
 
@@ -193,29 +224,16 @@ namespace sqlserver_crud_apotik
             }
 
             string gejala = "";
-            if (cbDemam.Checked)
-            {
-                gejala += "Demam;";
-            }
-            if (cbPusing.Checked)
-            {
-                gejala += "Pusing;";
-            }
-            if (cbMual.Checked)
-            {
-                gejala += "Mual;";
-            }
-            if (cbDiare.Checked)
-            {
-                gejala += "Diare;";
-            }
-            gejala = gejala.TrimEnd(';');
+            cbDemam.Checked = gejala.Contains("Demam");
+            cbPusing.Checked = gejala.Contains("Pusing");
+            cbMual.Checked = gejala.Contains("Mual");
+            cbDiare.Checked = gejala.Contains("Diare");
 
             String jenisObat = ckbObat.SelectedItem.ToString();
 
             string tglDaftar = dateTimePicker.Value.ToString("MMMM dd, yyyy");
 
-            SqlCommand cmd2 = new SqlCommand("INSERT INTO pharmacy(id, nama, telp, kelamin, tgldaftar, gejala, jenisobat, totalbayar) Values(@id, @nama, @telp, @kelamin, @tgldaftar, @gejala, @jenisobat, @totalbayar)", conn);
+            SqlCommand cmd2 = new SqlCommand("INSERT INTO pharmacy(id, nama, telp, kelamin, tgldaftar,jumlah , gejala, jenisobat, totalbayar) Values(@id, @nama, @telp, @kelamin, @tgldaftar,@jumlah, @gejala, @jenisobat, @totalbayar)", conn);
             cmd2.Parameters.AddWithValue("id", txtId.Text);
             cmd2.Parameters.AddWithValue("nama", txtNama.Text);
             cmd2.Parameters.AddWithValue("telp", txtNoTelp.Text);
@@ -224,6 +242,7 @@ namespace sqlserver_crud_apotik
             cmd2.Parameters.AddWithValue("jenisobat", jenisObat);
             cmd2.Parameters.AddWithValue("tgldaftar", tglDaftar);
             cmd2.Parameters.AddWithValue("totalbayar", totalPrice); 
+            cmd2.Parameters.AddWithValue("jumlah", quantityNumeric.Value); 
             conn.Open();
             cmd2.ExecuteNonQuery();
             conn.Close();
@@ -293,23 +312,10 @@ namespace sqlserver_crud_apotik
             }
 
             string gejala = "";
-            if (cbDemam.Checked)
-            {
-                gejala += "Demam;";
-            }
-            if (cbPusing.Checked)
-            {
-                gejala += "Pusing;";
-            }
-            if (cbMual.Checked)
-            {
-                gejala += "Mual;";
-            }
-            if (cbDiare.Checked)
-            {
-                gejala += "Diare;";
-            }
-            gejala = gejala.TrimEnd(';');
+            cbDemam.Checked = gejala.Contains("Demam");
+            cbPusing.Checked = gejala.Contains("Pusing");
+            cbMual.Checked = gejala.Contains("Mual");
+            cbDiare.Checked = gejala.Contains("Diare");
 
             String jenisObat = "";
             if (ckbObat.SelectedIndex != -1)
@@ -319,7 +325,7 @@ namespace sqlserver_crud_apotik
 
             string tglDaftar = dateTimePicker.Value.ToString("MMMM dd, yyyy");
 
-            SqlCommand cmd3 = new SqlCommand("Update pharmacy Set id=@id, nama=@nama, telp=@telp, kelamin=@kelamin, keluhan=@keluhan ,gejala=@gejala, jenisobat=@jenisobat, tgldaftar=@tgldaftar where id=@id", conn);
+            SqlCommand cmd3 = new SqlCommand("Update pharmacy Set id=@id, nama=@nama, telp=@telp, kelamin=@kelamin,,gejala=@gejala, jenisobat=@jenisobat, tgldaftar=@tgldaftar,totalbayar@totalbayar ,jumlah@jumlah where id=@id", conn);
 
             cmd3.Parameters.AddWithValue("id", txtId.Text);
             cmd3.Parameters.AddWithValue("nama", txtNama.Text);
@@ -334,7 +340,7 @@ namespace sqlserver_crud_apotik
             {
                 conn.Open();
                 cmd3.ExecuteNonQuery();
-                UpdateTotalBayar(txtId.Text); // Call the method with the correct signature
+                UpdateTotalBayar(txtId.Text, jenisObat);
                 bind_data();
                 MessageBox.Show("Record updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -348,24 +354,53 @@ namespace sqlserver_crud_apotik
             }
         }
 
-        private void UpdateTotalBayar(string id, decimal totalBayar)
+        private void UpdateTotalBayar(string id, string jenisObat)
         {
-            SqlCommand cmd = new SqlCommand("UPDATE pharmacy SET totalbayar=@totalBayar WHERE id=@id", conn);
-            cmd.Parameters.AddWithValue("@totalBayar", totalBayar);
-            cmd.Parameters.AddWithValue("@id", id);
-
             try
             {
+                SqlCommand cmdSelect = new SqlCommand("SELECT harga FROM obat WHERE jenisobat = @jenisobat", conn);
+                cmdSelect.Parameters.AddWithValue("jenisobat", jenisObat);
+
                 conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();
+                SqlDataReader reader = cmdSelect.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    decimal hargaObat = Convert.ToDecimal(reader["harga"]);
+                    decimal jumlah;
+                    if (decimal.TryParse(quantityNumeric.Text, out jumlah))
+                    {
+                        decimal totalBayar = hargaObat * jumlah;
+
+                        // Update total bayar in the pharmacy table
+                        SqlCommand cmdUpdateTotalBayar = new SqlCommand("UPDATE pharmacy SET totalbayar=@totalbayar WHERE id=@id", conn);
+                        cmdUpdateTotalBayar.Parameters.AddWithValue("totalbayar", totalBayar);
+                        cmdUpdateTotalBayar.Parameters.AddWithValue("id", id);
+
+                        reader.Close(); // Close the reader before executing the update query
+                        cmdUpdateTotalBayar.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid quantity value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Jenis obat tidak ditemukan atau invalid total price value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
-                conn.Close();
                 MessageBox.Show("Error updating total bayar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            finally
+            {
+                conn.Close();
+            }
         }
+
+
 
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -433,7 +468,7 @@ namespace sqlserver_crud_apotik
             CalculateTotalBayar();
         }
 
-        private decimal[] jenisObatPrices = { 0, 10000, 10000, 10000, 10000, 10000 };
+        private decimal[] jenisObatPrices = { 0, 10000, 15000, 20000, 30000, 25000 };
 
         private decimal CalculateTotalBayar()
         {
@@ -444,25 +479,19 @@ namespace sqlserver_crud_apotik
 
                 int quantity = (int)quantityNumeric.Value;
                 totalPrice = jenisObatPrice * quantity;
-
-                totalBayar.Text = totalPrice.ToString(); // Convert to string before assigning to Text
+                decimal total = quantityNumeric.Value * jenisObatPrice;
+                totalBayar.Text = total.ToString();
             }
             else
             {
                 MessageBox.Show("Please select a valid jenis obat.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                totalPrice = 0; // Setting a default value, adjust as needed.
-                totalBayar.Text = totalPrice.ToString(); // Convert to string before assigning to Text
+                totalPrice = 0; 
+                totalBayar.Text = totalPrice.ToString();
             }
 
 
             return totalPrice;
         }
-
-
-
-
-
-
 
         private decimal CalculateTotalBayarFromDatabase(string id)
         {
@@ -490,29 +519,6 @@ namespace sqlserver_crud_apotik
             }
 
             return totalBayar;
-        }
-
-        private void UpdateTotalBayar(string id)
-        {
-            decimal totalBayar = CalculateTotalBayarFromDatabase(id);
-
-            SqlCommand cmd = new SqlCommand("UPDATE pharmacy SET totalbayar=@totalBayar WHERE id=@id", conn);
-            cmd.Parameters.AddWithValue("@totalBayar", totalBayar);
-            cmd.Parameters.AddWithValue("@id", id);
-
-            try
-            {
-                conn.Open();
-                cmd.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error updating total bayar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                conn.Close();
-            }
         }
 
 
