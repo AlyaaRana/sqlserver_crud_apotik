@@ -41,7 +41,7 @@ namespace sqlserver_crud_apotik
 
         private void bind_data()
         {
-            SqlCommand cmd1 = new SqlCommand("Select id, nama, telp, kelamin, tgldaftar, totalbayar ,gejala, jenisobat  from pharmacy", conn);
+            SqlCommand cmd1 = new SqlCommand("Select id, nama, telp, kelamin, tgldaftar, totalbayar ,jumlah,gejala, jenisobat  from pharmacy", conn);
             SqlDataAdapter da = new SqlDataAdapter();
             da.SelectCommand = cmd1;
             DataTable dt = new DataTable();
@@ -90,31 +90,26 @@ namespace sqlserver_crud_apotik
             string kelamin = selectedrow.Cells[3].Value.ToString();
             tglDaftar = selectedrow.Cells[4].Value.ToString();
             string gejala = selectedrow.Cells["gejala"].Value.ToString();
-            totalBayar.Text = selectedrow.Cells[7].ToString();
-            /*String jenisObat = dataGridView1.Rows[rowIndex].Cells["jenisobat"].Value.ToString();*/
-            /*if (decimal.TryParse(selectedrow.Cells[7].Value.ToString(), out decimal parsedValue))
+            /*totalBayar.Text = selectedrow.Cells[7].ToString();*/
+
+            if (int.TryParse(selectedrow.Cells["jumlah"].Value.ToString(), out int quantityValue))
             {
-                totalPrice = parsedValue;
+                quantityNumeric.Value = quantityValue;
             }
             else
             {
-                MessageBox.Show("Invalid total price value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Invalid quantity value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            if (ckbObat.SelectedIndex >= 0 && ckbObat.SelectedIndex < jenisObatPrices.Length)
+            // Set the totalBayar value
+            if (decimal.TryParse(selectedrow.Cells["totalbayar"].Value.ToString(), out decimal totalBayarValue))
             {
-                selectedIndex = ckbObat.SelectedIndex;
-                decimal jenisObatPrice = jenisObatPrices[selectedIndex];
-
-                int quantity = (int)quantityNumeric.Value;
-                totalPrice = jenisObatPrice * quantity;
-
-                totalBayar.Text = totalPrice.ToString();
+                totalBayar.Text = totalBayarValue.ToString();
             }
             else
             {
-                MessageBox.Show("Invalid jenis obat selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }*/
+                MessageBox.Show("Invalid total bayar value.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             if (DateTime.TryParse(selectedrow.Cells[4].Value.ToString(), out DateTime dateTimeValue))
             {
@@ -130,31 +125,7 @@ namespace sqlserver_crud_apotik
                 rdPerempuan.Checked = true;
             }
 
-            /*selectedIndex = ckbObat.FindStringExact(jenisObat);
-            ckbObat.SelectedIndex = selectedIndex >= 0 ? selectedIndex : 0;
-
-            switch (jenisObat)
-            {
-                case "Obat Cair":
-                    ckbObat.SelectedIndex = 1;
-                    break;
-                case "Tablet":
-                    ckbObat.SelectedIndex = 2;
-                    break;
-                case "Kapsul":
-                    ckbObat.SelectedIndex = 3;
-                    break;
-                case "Obat Oles":
-                    ckbObat.SelectedIndex = 4;
-                    break;
-                case "Supositoria":
-                    ckbObat.SelectedIndex = 5;
-                    break;
-                default:
-                    ckbObat.SelectedIndex = 0;
-                    break;
-            }*/
-
+           
             string jenisobat = selectedrow.Cells["jenisobat"].Value.ToString();
             if (jenisobat.Contains("Obat Cair"))
             {
@@ -177,35 +148,10 @@ namespace sqlserver_crud_apotik
                 ckbObat.SelectedIndex = 4;
             }
 
-            /*jenisObat = "";
-            if (ckbObat.SelectedIndex != -1)
-            {
-                jenisObat = ckbObat.Items[ckbObat.SelectedIndex].ToString();
-            }*/
-
-
             cbDemam.Checked = gejala.Contains("Demam");
             cbPusing.Checked = gejala.Contains("Pusing");
             cbMual.Checked = gejala.Contains("Mual");
             cbDiare.Checked = gejala.Contains("Diare");
-
-            /*if (cbDemam.Checked)
-            {
-                gejala += "Demam;";
-            }
-            if (cbPusing.Checked)
-            {
-                gejala += "Pusing;";
-            }
-            if (cbMual.Checked)
-            {
-                gejala += "Mual;";
-            }
-            if (cbDiare.Checked)
-            {
-                gejala += "Diare;";
-            }
-            gejala = gejala.TrimEnd(';');*/
 
             
         }
@@ -223,17 +169,17 @@ namespace sqlserver_crud_apotik
                 kelamin = "Perempuan";
             }
 
-            string gejala = "";
-            cbDemam.Checked = gejala.Contains("Demam");
-            cbPusing.Checked = gejala.Contains("Pusing");
-            cbMual.Checked = gejala.Contains("Mual");
-            cbDiare.Checked = gejala.Contains("Diare");
+            String gejala = "";
+            cbDemam.Checked = gejala.Contains("Demam,");
+            cbPusing.Checked = gejala.Contains("Pusing,");
+            cbMual.Checked = gejala.Contains("Mual,");
+            cbDiare.Checked = gejala.Contains("Diare,");
+            gejala = gejala.TrimEnd(',', ' ');
 
             String jenisObat = ckbObat.SelectedItem.ToString();
-
             string tglDaftar = dateTimePicker.Value.ToString("MMMM dd, yyyy");
 
-            SqlCommand cmd2 = new SqlCommand("INSERT INTO pharmacy(id, nama, telp, kelamin, tgldaftar,jumlah , gejala, jenisobat, totalbayar) Values(@id, @nama, @telp, @kelamin, @tgldaftar,@jumlah, @gejala, @jenisobat, @totalbayar)", conn);
+            SqlCommand cmd2 = new SqlCommand("INSERT INTO pharmacy(id, nama, telp, kelamin, tgldaftar, jumlah, gejala, jenisobat, totalbayar) Values(@id, @nama, @telp, @kelamin, @tgldaftar, @jumlah, @gejala, @jenisobat, @totalbayar)", conn);
             cmd2.Parameters.AddWithValue("id", txtId.Text);
             cmd2.Parameters.AddWithValue("nama", txtNama.Text);
             cmd2.Parameters.AddWithValue("telp", txtNoTelp.Text);
@@ -241,16 +187,17 @@ namespace sqlserver_crud_apotik
             cmd2.Parameters.AddWithValue("gejala", gejala);
             cmd2.Parameters.AddWithValue("jenisobat", jenisObat);
             cmd2.Parameters.AddWithValue("tgldaftar", tglDaftar);
-            cmd2.Parameters.AddWithValue("totalbayar", totalPrice); 
-            cmd2.Parameters.AddWithValue("jumlah", quantityNumeric.Value); 
+            cmd2.Parameters.AddWithValue("totalbayar", totalPrice);
+            cmd2.Parameters.AddWithValue("jumlah", quantityNumeric.Value);
+
             conn.Open();
             cmd2.ExecuteNonQuery();
             conn.Close();
             bind_data();
 
-
             dataGridView1.ReadOnly = true;
         }
+
 
         private void btnClear_Click(object sender, EventArgs e)
         {
@@ -325,7 +272,8 @@ namespace sqlserver_crud_apotik
 
             string tglDaftar = dateTimePicker.Value.ToString("MMMM dd, yyyy");
 
-            SqlCommand cmd3 = new SqlCommand("Update pharmacy Set id=@id, nama=@nama, telp=@telp, kelamin=@kelamin,,gejala=@gejala, jenisobat=@jenisobat, tgldaftar=@tgldaftar,totalbayar@totalbayar ,jumlah@jumlah where id=@id", conn);
+            SqlCommand cmd3 = new SqlCommand("Update pharmacy Set id=@id, nama=@nama, telp=@telp, kelamin=@kelamin,gejala=@gejala, jenisobat=@jenisobat, tgldaftar=@tgldaftar,totalbayar=@totalbayar ,jumlah=@jumlah where id=@id", conn);
+
 
             cmd3.Parameters.AddWithValue("id", txtId.Text);
             cmd3.Parameters.AddWithValue("nama", txtNama.Text);
@@ -335,6 +283,7 @@ namespace sqlserver_crud_apotik
             cmd3.Parameters.AddWithValue("gejala", gejala);
             cmd3.Parameters.AddWithValue("jenisobat", jenisObat);
             cmd3.Parameters.AddWithValue("tgldaftar", tglDaftar);
+            cmd3.Parameters.AddWithValue("totalbayar", totalPrice);
 
             try
             {
